@@ -6,14 +6,20 @@ connectDb()
 
 export async function POST(req: NextRequest){
     try {
+
+        const token = req.cookies.get("token");
+
         const res = NextResponse.json({
             message : "Logged out successfully",
             success : true,
         })
 
-        res.cookies.set("token","",{ httpOnly : true, expires : new Date(0)});
+        if(token){
+            res.cookies.set("token","",{ httpOnly : true, expires : new Date(0)});
 
-        return res;
+            return res;
+        }
+        return NextResponse.json({message : "User is already logged out"},{status : 200});
 
     } catch (error : any) {
         return NextResponse.json({

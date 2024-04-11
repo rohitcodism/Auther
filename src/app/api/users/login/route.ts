@@ -15,6 +15,8 @@ export async function POST(req : NextRequest){
 
         const { username, email, password } = await reqBody;
 
+        console.log("username : ",username," , email : ",email," password : ",password);
+
         if((username && email) && password){
             return NextResponse.json({message : "You have to fill all the fields"},{status : 500});
         }
@@ -59,6 +61,8 @@ export async function POST(req : NextRequest){
         res.cookies.set("token",token,{
             httpOnly : true,
         })
+
+        return res;
 
 
     } catch (error) {
