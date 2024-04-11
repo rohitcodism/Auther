@@ -9,7 +9,7 @@ connectDb();
 export async function POST(req: NextRequest){
     try {
         const reqBody = req.json();
-        const {name, email, password}:any = reqBody
+        const {username, email, password} = await reqBody //* Request body can be a promise that is why typescript uses await for safety */
         
         //validation
         console.log(reqBody);
@@ -31,7 +31,7 @@ export async function POST(req: NextRequest){
         const hashedPassword = await bcryptjs.hash(password,salt);
 
         const newUser = new User({
-            name,
+            username,
             email,
             password: hashedPassword,
         })
