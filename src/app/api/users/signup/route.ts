@@ -8,7 +8,7 @@ connectDb();
 
 export async function POST(req: NextRequest){
     try {
-        const reqBody = req.json();
+        const reqBody = await req.json();
         const {username, email, password} = await reqBody //* Request body can be a promise that is why typescript uses await for safety */
         
         //validation
