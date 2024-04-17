@@ -51,7 +51,7 @@ export const sendMail = async ({
                             <td style="background-color: #f8f8f8; padding: 40px 20px; text-align: center;">
                                 <h1 style="color: #333;">Welcome to Our Website!</h1>
                                 <p style="color: #666;">Please verify your email address to complete your registration.</p>
-                                <a href="${process.env.DOMAIN}/verify-email/${hashedVerifyToken}"style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px; margin-top: 20px;">Verify Email</a>
+                                <a href="${process.env.DOMAIN}/verify-email?token=${hashedVerifyToken}"style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px; margin-top: 20px;">Verify Email</a>
                             </td>
                         </tr>
                         <tr>
@@ -74,7 +74,7 @@ export const sendMail = async ({
                         <h1 style="color: #333;">Password Reset</h1>
                         <p style="color: #666;">Here is your password reset number: <strong>123456</strong>.</p>
                         <p style="color: #666;">Please use this link to reset your password. If you didn't request a password reset, please ignore this email.</p>
-                        <a href="${process.env.DOMAIN}/reset-password/${hashedVerifyToken}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px; margin-top: 20px;">Reset Password</a>
+                        <a href="${process.env.DOMAIN}/reset-password?token=${hashedVerifyToken}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px; margin-top: 20px;">Reset Password</a>
                     </td>
                         </tr>
                         <tr>
