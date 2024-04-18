@@ -27,7 +27,7 @@ function Login() {
 
             toast.success("User logged in successfully!!");
             console.log("Log in Success : ",res.data);
-            router.push("/");
+            router.push("/profile");
 
         } catch (error: any) {
             console.log("Error : ",error.message);

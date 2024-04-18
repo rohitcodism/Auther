@@ -1,19 +1,14 @@
 'use client'
 
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function Home() {
 
-  const [user, setUser] = useState({
-    _id: "",
-    username: "",
-    email: "",
-    isVerified: "",
-    isAdmin: ""
-  })
+  const [userId, setUserId] = useState("")
 
   const router = useRouter();
 
@@ -49,13 +44,13 @@ export default function Home() {
   useEffect(() => {
     getUser().then((res) => {
       console.log(res.User);
-      setUser({ ...user, username: res.User.username, _id: res.User._id, email: res.User.email, isVerified: res.User.isVerified, isAdmin: res.User.isAdmin });
+      setUserId(res.User._id);
     }).catch(() => {
       toast.error("Error occurred!!");
     })
   }, []);
 
-  console.log(user);
+  console.log(userId);
 
 
   return (
@@ -76,6 +71,16 @@ export default function Home() {
           text-center
         "
       >
+        <h1
+          className="
+          font-bold
+          text-3xl
+          text-white
+          py-2
+        "
+        >
+          Profile
+        </h1>
         <h2
           className="
             font-bold
@@ -84,18 +89,17 @@ export default function Home() {
             py-2
           "
         >
-          Username : {user.username}
+          Username : {userId}
         </h2>
-        <h3
-          className="
-            font-bold
-            text-2xl
-            text-white
-            py-2
-          "
+        <Link
+          href={``}
         >
-          Email : {user.email}
-        </h3>
+          <button
+
+          >
+            Get User Details
+          </button>
+        </Link>
       </div>
       <button
         className="
